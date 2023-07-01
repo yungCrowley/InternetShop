@@ -1,0 +1,92 @@
+﻿<Page x:Class="InternetShop.Pages.LVPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InternetShop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LVPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"
+                    Background="LightGray">
+            <ComboBox x:Name="ManClothType"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding Name}"
+                      SelectionChanged="ManClothType_SelectionChanged"/>
+            <DataGrid x:Name="DGBucket"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Товар"
+                                        Binding="{Binding Product.Name}" />
+                    <DataGridTextColumn Header="Цена"
+                                        Binding="{Binding Product.Price}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="OrderBtn"
+                    Content="Сделать заказ"
+                    Click="OrderBtn_Click" />
+            <Button x:Name="BackBtn" 
+                    Content="Назад"
+                    Click="BackBtn_Click"/>
+            <Button x:Name="DeleteBtn"
+                    Content="Удалить продукцию"
+                   Click="DeleteBtn_Click" />
+        </StackPanel>
+        <ListView x:Name="LVMan"
+                  Grid.Column="1"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black"
+                            BorderThickness="2"
+                            CornerRadius="10">
+                        <StackPanel Height="450"
+                                    Width="200">
+                            <Image x:Name="ImageDeff"
+                                   Source="{Binding Image}"
+                                   Height="200"
+                                   Width="150" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Название: " />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Описание: " />
+                                <TextBlock Text="{Binding Description}"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Цена: " />
+                                <TextBlock Text="{Binding Price}" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Бренд: " />
+                                <TextBlock Text="{Binding Manufacturer.Name}" />
+                            </StackPanel>
+                            <Button x:Name="AddToBucket"
+                                    Content="Добавить в корзину"
+                                    Width="150"
+                                    Height="30"
+                                    Click="AddToBucket_Click"
+                                    VerticalAlignment="Bottom" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+       
+    </Grid>
+</Page>

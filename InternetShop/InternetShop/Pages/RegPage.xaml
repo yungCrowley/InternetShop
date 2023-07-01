@@ -1,0 +1,54 @@
+﻿<Page x:Class="InternetShop.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InternetShop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="850" d:DesignWidth="1200"
+      Title="RegPage">
+
+    <Grid Background="White" >
+        <StackPanel VerticalAlignment="Top">
+            <Image Source="C:\games\diplom\InternetShop\InternetShop\image\LacosteModel1.jpg" 
+                   Margin="0 25 0 0"/>
+        </StackPanel>
+        <Border CornerRadius="20"
+                BorderBrush="Black"
+                BorderThickness="2"
+                Height="500"
+                Width="500"
+                >
+            
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Регистрация"
+                       FontSize="25"
+                       Margin="10"/>
+            <TextBlock Text="ФИО" />
+            <TextBox x:Name="TBFIO" 
+                     Margin="5"
+                     Text="{Binding FIO}"/>
+            <TextBlock Text="Дата рождения" />
+            <DatePicker x:Name="DateOfBirth"
+                Margin="5"
+                        SelectedDate="{Binding DateOfBirth}"/>
+            <TextBlock Text="Адрес проживания" />
+            <TextBox x:Name="AddressTB"
+                Margin="5" 
+                     Text="{Binding Address}"/>
+            <TextBlock Text="Номер телефона" />
+            <TextBox Margin="5" 
+                     x:Name="PhoneTB"
+                     Text="{Binding Phone}"/>
+            <Button x:Name="RegBtn"
+                    Content="Регистрация"
+                    Margin="5"
+                    Click="RegBtn_Click"/>
+                <Button x:Name="BackBtn"
+                        Content="Назад"
+                        Click="BackBtn_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
